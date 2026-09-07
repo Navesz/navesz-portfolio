@@ -1,130 +1,193 @@
-import type { ReactNode } from 'react'
+import type { ReactNode } from "react"
+import { ArrowUpRight, ArrowDown, ArrowUp, Code2, Asterisk } from "lucide-react"
+import { linkWhatsapp, site, type Contato } from "@/conteudo/carregar"
+import { portfolio as p } from "@/conteudo/portfolio"
+import { Projetos } from "@/components/projetos"
 
-import { linkWhatsapp, site, type Contato } from '@/conteudo/carregar'
-
-/**
- * NO CONTENT LITERAL INSIDE. Every visible text is an `{expression}` read from
- * `conteudo/site.json`; what is left in the `.tsx` is structure and Tailwind
- * classes.
- *
- * The WhatsApp link is the case that gives §12.3 its name: the link FORMAT is
- * code (it does not change from business to business), the RECIPIENT is
- * validated content. The `Navesz/Galegos#1` PR missed the cut by sending the
- * recipient to an env var — the build passed and the link shipped with nobody
- * on the other side.
- *
- * ─────────────────────────────────────────────────────────────────────────
- * THIS FILE RENDERS WHAT WAS DECLARED, AND DOES NOT BREAK ON WHAT IS MISSING.
- *
- * Until 02/09 it assumed phone, e-mail and address always existed, and the
- * schema demanded them of every site so the assumption would be true. That was
- * §12.3 read wrong: it decided that the phone LIVES here and is validated, not
- * that every business HAS a phone. Now the three are conditional blocks, and
- * the declaration is the presence of the key in `conteudo/site.json`.
- *
- * THE `CONTATOS` MAP IS THE TOOTH, and it closes both directions of the defect
- * at once, with no new rule, no heuristic and no file scanning:
- *
- *   · block DECLARED and not rendered — somebody writes the WhatsApp, the home
- *     has no button, and the person thinks they published the contact. Deleting
- *     the entry here leaves the map incomplete before the `satisfies` below: IT
- *     DOES NOT COMPILE.
- *   · block RENDERED and empty — the Galegos disaster, a `wa.me` link with no
- *     recipient. The value is `T | null` and `linkWhatsapp` takes the block, not
- *     the site: without narrowing the `null`, IT DOES NOT COMPILE.
- *   · NEW block in the schema — an Instagram, a set of opening hours — with no
- *     place on the home: the key is missing from the map and the `satisfies`
- *     fails. IT DOES NOT COMPILE.
- *
- * The limit, said to your face: deleting the whole JSX section below, map
- * included, is caught by no type at all. That is the owner removing the home,
- * not a silent drift — and the project's `npm run lint` reports whatever is
- * left unused.
- * ─────────────────────────────────────────────────────────────────────────
- */
 const CONTATOS = {
   whatsapp: ({ whatsapp }: Contato) =>
-    whatsapp && (
-      <a href={linkWhatsapp(whatsapp)} rel="noopener noreferrer" target="_blank">
-        {whatsapp.exibicao}
-      </a>
-    ),
-
-  email: ({ email }: Contato) => email && <a href={`mailto:${email}`}>{email}</a>,
-
+    whatsapp && <a href={linkWhatsapp(whatsapp)}>{whatsapp.exibicao}</a>,
+  email: ({ email }: Contato) =>
+    email && <a href={`mailto:${email}`}>{email}</a>,
   endereco: ({ endereco }: Contato) =>
     endereco && (
-      <address className="not-italic">
+      <address>
         {endereco.logradouro}
-        {', '}
+        {", "}
         {endereco.bairro}
-        {' — '}
+        {" — "}
         {endereco.cidade}
-        {'/'}
+        {"/"}
         {endereco.uf}
-        {' · '}
+        {" · "}
         {endereco.cep}
       </address>
     ),
-  // `satisfies`, and not a type annotation: an annotation would accept the map
-  // SHORT (the object would be just an incomplete `Renderizadores` at writing
-  // time) and would erase each entry's return type. `satisfies` charges for the
-  // key that is missing AND the key that is extra — a block deleted from the
-  // schema with a renderer forgotten here does not compile either.
-  //
-  // No `-?`, on purpose: the keys of `Contato` are MANDATORY with value
-  // `T | null`, never `?`, because the schema's `objeto()` always writes all of
-  // them. The `-?` was here and was measured on 02/09: with it gone, deleting a
-  // renderer still gives TS1360. A modifier that changes nothing is a comment
-  // lying that it is code.
 } satisfies { [Bloco in keyof Contato]: (contato: Contato) => ReactNode }
 
 export default function Pagina() {
-  // A one-level alias, which is what rebar's `blocos` step knows how to resolve
-  // when it checks every `site.<field>` against the validated shape.
-  const zap = site.identidade.whatsapp
-
   return (
-    <main className="mx-auto flex min-h-svh max-w-3xl flex-col gap-10 px-6 py-16">
-      <header className="flex flex-col gap-4">
-        <h1 className="text-4xl font-semibold tracking-tight">{site.home.titulo}</h1>
-        <p className="text-muted-foreground text-lg leading-relaxed">{site.home.subtitulo}</p>
-        {/* The main call to action IS the WhatsApp button, so it exists exactly
-            when the block exists. Without the block the home has no button, on
-            purpose: inventing a call to action for the e-mail would be the
-            generator writing copy nobody approved, and copy nobody approved is
-            what turns into a dead link. */}
-        {zap && (
-          <a
-            className="bg-primary text-primary-foreground inline-flex w-fit items-center rounded-md px-5 py-2.5 text-sm font-medium"
-            href={linkWhatsapp(zap)}
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            {zap.chamadaAcao}
+    <div id="topo">
+      <a className="pular" href="#conteudo">
+        {p.pular}
+      </a>
+      <header className="cabecalho largura">
+        <a className="marca" href="#topo" aria-label={site.identidade.nome}>
+          <span className="marca-simbolo">↗</span>
+          {p.marca}
+          <span className="marca-ponto">.</span>
+        </a>
+        <nav aria-label={p.navegacao}>
+          <div className="menu-links">
+            {p.menu.map((item) => (
+              <a key={item.destino} href={item.destino}>
+                {item.texto}
+              </a>
+            ))}
+          </div>
+          <a href={p.github.url} className="github-topo">
+            <Code2 size={17} aria-hidden="true" />
+            {p.github.texto}
+            <ArrowUpRight size={15} aria-hidden="true" />
           </a>
-        )}
+        </nav>
       </header>
-
-      <ul className="grid gap-6 sm:grid-cols-3">
-        {site.home.destaques.map((destaque) => (
-          <li className="flex flex-col gap-2" key={destaque.titulo}>
-            <h2 className="font-medium">{destaque.titulo}</h2>
-            <p className="text-muted-foreground text-sm leading-relaxed">{destaque.texto}</p>
-          </li>
+      <main id="conteudo">
+        <section className="hero largura">
+          <div className="hero-conteudo">
+            <p className="sobretitulo">
+              <span className="ponto-verde" />
+              {p.selo}
+            </p>
+            <h1>
+              {site.home.titulo.split("\n")[0]}
+              <br />
+              <span>{site.home.titulo.split("\n")[1]}</span>
+            </h1>
+            <p className="hero-descricao">{site.home.subtitulo}</p>
+            <div className="hero-acoes">
+              <a className="botao-principal" href="#projetos">
+                {p.chamada}
+                <ArrowDown size={18} aria-hidden="true" />
+              </a>
+              <a className="link-simples" href="#sobre">
+                {p.secundaria}
+                <ArrowUpRight size={17} aria-hidden="true" />
+              </a>
+            </div>
+            <p className="hero-nota">{p.nota}</p>
+          </div>
+          <div className="orbital" aria-hidden="true">
+            <div className="orbital-cabeca">
+              <span>{p.visual.titulo}</span>
+              <Asterisk size={19} />
+            </div>
+            <div className="orbital-campo">
+              <div className="orbita orbita-um" />
+              <div className="orbita orbita-dois" />
+              <div className="orbita orbita-tres" />
+              <div className="nucleo">
+                {p.visual.centro}
+                <span>↗</span>
+              </div>
+              <i className="satelite s-um" />
+              <i className="satelite s-dois" />
+              <i className="satelite s-tres" />
+              <div className="cruz c-um">+</div>
+              <div className="cruz c-dois">+</div>
+            </div>
+            <div className="orbital-rodape">
+              <span>{p.visual.base}</span>
+              <span>↗</span>
+            </div>
+          </div>
+        </section>
+        <div className="faixa">
+          <div className="largura">
+            {p.visual.lista.map((item) => (
+              <span key={item}>
+                {item}
+                <Asterisk size={17} aria-hidden="true" />
+              </span>
+            ))}
+          </div>
+        </div>
+        <section id="projetos" className="secao-projetos largura">
+          <p className="sobretitulo">{p.indice}</p>
+          <div className="titulo-secao">
+            <h2>{p.tituloProjetos}</h2>
+            <p>{p.introProjetos}</p>
+          </div>
+          <Projetos conteudo={p} />
+        </section>
+        <section id="sobre" className="sobre">
+          <div className="largura">
+            <p className="sobretitulo">{p.sobre.indice}</p>
+            <div className="sobre-grade">
+              <div>
+                <h2>{p.sobre.titulo}</h2>
+                <p className="sobre-intro">{p.sobre.texto}</p>
+                <p className="sobre-nota">{p.sobre.nota}</p>
+                <div className="assinatura">
+                  <span className="avatar">↗</span>
+                  {p.sobre.assinatura}
+                </div>
+              </div>
+              <ol className="principios">
+                {site.home.destaques.map((item, i) => (
+                  <li key={item.titulo}>
+                    <span className="principio-numero">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <div>
+                      <h3>{item.titulo}</h3>
+                      <p>{item.texto}</p>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+            </div>
+          </div>
+        </section>
+        <section className="convite largura">
+          <Asterisk
+            className="asterisco-grande"
+            size={72}
+            strokeWidth={1}
+            aria-hidden="true"
+          />
+          <h2>{p.sobre.cta}</h2>
+          <p>{p.sobre.textoCta}</p>
+          <a className="botao-principal" href={p.github.url}>
+            {p.sobre.botao}
+            <ArrowUpRight size={18} aria-hidden="true" />
+          </a>
+        </section>
+      </main>
+      <footer className="rodape largura">
+        <div className="rodape-principal">
+          <a className="marca" href="#topo">
+            {p.marca}
+            <span className="marca-ponto">.</span>
+          </a>
+          <p>{p.rodape.credito}</p>
+          <a href={p.repositorio}>
+            {p.rodape.fonte}
+            <ArrowUpRight size={16} aria-hidden="true" />
+          </a>
+        </div>
+        <div className="rodape-inferior">
+          <span>{p.rodape.ano}</span>
+          <span>{p.rodape.edicao}</span>
+          <a href="#topo">
+            {p.rodape.voltar}
+            <ArrowUp size={15} aria-hidden="true" />
+          </a>
+        </div>
+        {Object.entries(CONTATOS).map(([bloco, montar]) => (
+          <div key={bloco}>{montar(site.identidade)}</div>
         ))}
-      </ul>
-
-      <footer className="text-muted-foreground mt-auto flex flex-col gap-1 text-sm">
-        <p>{site.identidade.nome}</p>
-        {Object.entries(CONTATOS).map(([bloco, montar]) => {
-          const linha = montar(site.identidade)
-          // An absent block returns `null` and does not become an empty
-          // paragraph: the footer of a site with only an e-mail has one line,
-          // not three with two holes.
-          return linha ? <p key={bloco}>{linha}</p> : null
-        })}
       </footer>
-    </main>
+    </div>
   )
 }

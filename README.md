@@ -1,48 +1,50 @@
-# rebar-laboratorio-20260907
+# Navesz — laboratório aberto de software
 
-Site estático em Next.js com App Router, gerado pelo `rebar new` e nascido com
-o portão ligado.
+Portfólio de projetos públicos de [Navesz](https://github.com/Navesz), criado de verdade com o gerador do [rebar](https://github.com/Navesz/rebar).
 
-## A pilha, e por que ela
+**Site:** https://navesz.github.io/navesz-portfolio/
 
-| peça | escolha | motivo |
-| --- | --- | --- |
-| framework | Next 16, App Router, `output: "export"` | publica no GitHub Pages sem servidor |
-| UI | shadcn no estilo `base-nova`, sobre `@base-ui/react` | zero Radix, decisão da §12.2 |
-| estilo | Tailwind 4 | vem com o preset |
-| conteúdo | `conteudo/*.json`, validado no build | §12.3 — ver abaixo |
+Seis projetos, filtros por área, navegação por teclado, apresentação do laboratório e links para código e demonstrações. As ilustrações são CSS/SVG próprios; não representam capturas dos produtos.
 
-## Conteúdo não mora no código
+## Desenvolvimento
 
-Telefone, CNPJ, endereço e preço são **conteúdo validado**, em `conteudo/*.json`,
-e não literal em `.tsx` nem variável de ambiente. A decisão tem custo medido:
-mover o número de WhatsApp para variável de ambiente faz o build passar, o link
-de WhatsApp subir sem destinatário e o cardápio parar de entregar pedido **em
-silêncio**. A régua do rebar cobra isso pelas regras `telefone` e
-`conteudo-fora-do-codigo`.
-
-## Comandos
+Node.js 22.18 ou superior e npm.
 
 ```sh
-npm run dev         # desenvolvimento
-npm run verificar   # o portão inteiro: lint, typecheck, teste e build
-npm run build       # gera out/ , estático
-npx --yes github:Navesz/rebar .   # a régua do rebar, o placar
-```
-
-## Hooks
-
-```sh
+npm ci
 node .githooks/install.mjs
+npm run dev
 ```
 
-Configura `core.hooksPath`, então o hook é versionado e atualiza junto com o
-repositório. O `pre-commit` varre segredo no que está em stage; o `commit-msg`
-barra trailer de coautoria de IA antes de o commit existir. Pular uma vez:
-`git commit --no-verify`.
+Abra http://localhost:3000/navesz-portfolio/.
+
+```sh
+npm run verificar
+```
+
+O comando executa lint, TypeScript, testes de contrato, build estático e inspeção dos recursos exportados. O GitHub Actions repete as verificações em Windows e Linux e só então publica a pasta `out/` no Pages.
+
+## Conteúdo e publicação
+
+- `conteudo/site.json`: identidade, SEO, cores e URL da publicação.
+- `conteudo/portfolio.json`: projetos, links, categorias e textos visíveis.
+- `conteudo/esquema.ts` e `conteudo/portfolio.ts`: validação antes da exportação.
+- `next.config.ts`: exportação estática; o subdiretório é derivado da URL validada.
+- `components/projetos.tsx`: filtros locais, sem chamadas externas.
+- `.github/workflows/verificar.yml`: verificação e publicação.
+
+Ao mudar de repositório ou domínio, atualize `meta.urlBase`, os links do portfólio e reconstrua. O Pages deve usar **GitHub Actions** como origem.
+
+## Base técnica
+
+Next.js 16, React 19, TypeScript, Tailwind CSS 4 e botão shadcn/base-nova sobre Base UI. A instalação de Next foi atualizada para 16.3.4 com eslint-config-next correspondente, pois a versão 16.2.6 recebida do scaffold apresentava alertas no npm audit. Nenhuma biblioteca adicional de interface foi instalada.
+
+O servidor MCP local do rebar fica em `.rebar/mcp.mjs`. A configuração `.mcp.json` permite consultar as regras derivadas deste projeto. Os hooks verificam segredos e autoria humana antes do commit.
+
+## Sobre os dados
+
+Descrições e links se baseiam nos repositórios públicos do perfil em 7 de setembro de 2026. Não há e-mail, telefone, localização ou credenciais inventados. Projetos sem demonstração pública conhecida oferecem o link do código.
 
 ## Licença
 
-Apache-2.0. Ver `LICENSE` e `NOTICE`.
-
-Copyright 2026 Naves.
+Apache-2.0; veja LICENSE e NOTICE.

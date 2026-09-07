@@ -1,6 +1,6 @@
 <!-- rebar:agentes -->
 
-# rebar-laboratorio-20260907 — read before writing any code
+# navesz-portfolio — read before writing any code
 
 ## 1. Turn the MCP on first
 

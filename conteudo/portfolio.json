@@ -1,0 +1,163 @@
+{
+  "marca": "navesz",
+  "selo": "LABORATÓRIO ABERTO DE SOFTWARE",
+  "pular": "Pular para o conteúdo",
+  "menu": [
+    {
+      "texto": "Projetos",
+      "destino": "#projetos"
+    },
+    {
+      "texto": "Sobre",
+      "destino": "#sobre"
+    }
+  ],
+  "github": {
+    "texto": "GitHub",
+    "url": "https://github.com/Navesz"
+  },
+  "chamada": "Explorar projetos",
+  "secundaria": "Conhecer o laboratório",
+  "nota": "Feito para explorar. Aberto para construir.",
+  "indice": "01 — SELEÇÃO DE PROJETOS",
+  "tituloProjetos": "Um problema.\nUm projeto.",
+  "introProjetos": "Universos diferentes, a mesma vontade de fazer funcionar.",
+  "filtros": ["Todos", "Ferramentas", "IA", "Simulação", "Web"],
+  "rotuloFiltro": "Filtrar projetos por área",
+  "contagem": "projetos na seleção",
+  "codigo": "Código",
+  "abrir": "Abrir projeto",
+  "detalhes": "Por dentro do projeto",
+  "destaque": "EM DESTAQUE",
+  "origem": "GERADO COM REBAR",
+  "repositorio": "https://github.com/Navesz/navesz-portfolio",
+  "projetos": [
+    {
+      "id": "rebar",
+      "nome": "rebar",
+      "categoria": "Ferramentas",
+      "tipo": "QUALIDADE DE CÓDIGO",
+      "descricao": "O erro encontra uma barreira antes de chegar à produção.",
+      "detalhe": "Um verificador de repositórios, um bloqueio de commit e um gerador que começa o próximo projeto com as verificações instaladas.",
+      "tags": ["JavaScript", "CLI", "MCP"],
+      "github": "https://github.com/Navesz/rebar",
+      "demo": "https://navesz.github.io/rebar-site/",
+      "visual": "rebar",
+      "legenda": "REPOSITÓRIO → VERIFICAÇÃO → PUBLICAÇÃO",
+      "linhas": [
+        "$ rebar .",
+        "✓ estrutura",
+        "✓ identidade",
+        "✓ verificações",
+        "código pronto para seguir."
+      ],
+      "numero": "01"
+    },
+    {
+      "id": "prumo",
+      "nome": "prumo",
+      "categoria": "IA",
+      "tipo": "IMAGENS & INTELIGÊNCIA ARTIFICIAL",
+      "descricao": "Vários modelos. Um lugar para criar.",
+      "detalhe": "Use suas próprias chaves de API, gere imagens em diferentes modelos e veja o custo antes de gastar.",
+      "tags": ["TypeScript", "IA", "BYOK"],
+      "github": "https://github.com/Navesz/prumo",
+      "demo": null,
+      "visual": "prumo",
+      "legenda": "UM PROMPT. NOVAS POSSIBILIDADES.",
+      "linhas": ["prumo / image playground", "explorar", "comparar", "criar"],
+      "numero": "02"
+    },
+    {
+      "id": "openkartline",
+      "nome": "openkartline",
+      "categoria": "Simulação",
+      "tipo": "TRAÇADO & SIMULAÇÃO",
+      "descricao": "A próxima curva começa nos dados.",
+      "detalhe": "Desenhe uma pista e explore a linha de corrida, o perfil de velocidade, os pontos de frenagem e a estimativa de tempo de volta.",
+      "tags": ["TypeScript", "Simulação", "Kart"],
+      "github": "https://github.com/Navesz/openkartline",
+      "demo": "https://navesz.github.io/openkartline/",
+      "visual": "pista",
+      "legenda": "DESENHAR. SIMULAR. AJUSTAR.",
+      "linhas": ["racing line", "apex", "braking"],
+      "numero": "03"
+    },
+    {
+      "id": "openparts",
+      "nome": "openparts",
+      "categoria": "Ferramentas",
+      "tipo": "PEÇAS & COMPATIBILIDADE",
+      "descricao": "Conectar peças. Organizar descobertas.",
+      "detalhe": "Um laboratório local de intercâmbio de peças do Chevrolet Vectra, com código aberto e foco em organizar compatibilidades.",
+      "tags": ["Svelte", "Local-first", "Automotivo"],
+      "github": "https://github.com/Navesz/openparts",
+      "demo": null,
+      "visual": "pecas",
+      "legenda": "INFORMAÇÃO QUE ENCAIXA.",
+      "linhas": ["openparts", "conexões", "compatibilidade"],
+      "numero": "04"
+    },
+    {
+      "id": "constellation",
+      "nome": "constellation",
+      "categoria": "Ferramentas",
+      "tipo": "DADOS PÚBLICOS DO GITHUB",
+      "descricao": "Sinais públicos, vistos de perto.",
+      "detalhe": "Um observatório de perfis, conquistas e atividade no GitHub, pensado para medir sinais públicos sem transformá-los em pontuação artificial.",
+      "tags": ["TypeScript", "GitHub", "Dados"],
+      "github": "https://github.com/Navesz/constellation",
+      "demo": null,
+      "visual": "constelacao",
+      "legenda": "ATIVIDADE. CONTEXTO. CONEXÕES.",
+      "linhas": ["public signals"],
+      "numero": "05"
+    },
+    {
+      "id": "Galegos",
+      "nome": "Galegos",
+      "categoria": "Web",
+      "tipo": "CARDÁPIO DIGITAL",
+      "descricao": "Da escolha ao pedido, sem desencontro.",
+      "detalhe": "Um cardápio digital criado para um restaurante real, que organiza a escolha do cliente e envia o pedido finalizado ao WhatsApp.",
+      "tags": ["TypeScript", "Web", "WhatsApp"],
+      "github": "https://github.com/Navesz/Galegos",
+      "demo": null,
+      "visual": "menu",
+      "legenda": "ESCOLHER → CONFERIR → PEDIR",
+      "linhas": ["Galegos", "feito para dar fome.", "seu próximo pedido"],
+      "numero": "06"
+    }
+  ],
+  "sobre": {
+    "indice": "02 — QUEM CONSTRÓI",
+    "titulo": "Prazer, Naves.",
+    "texto": "Este é o meu espaço para reunir o que construo no GitHub. Aqui, ferramentas de desenvolvimento dividem a bancada com inteligência artificial, simulação e aplicações para o dia a dia.",
+    "nota": "O fio condutor é a curiosidade: entender um problema, experimentar uma solução e deixar o caminho aberto no código.",
+    "assinatura": "Naves / @Navesz",
+    "cta": "Veja o que estou construindo.",
+    "textoCta": "Explore os repositórios, acompanhe as mudanças ou abra uma conversa nas issues de um projeto.",
+    "botao": "Encontrar no GitHub"
+  },
+  "rodape": {
+    "credito": "Construído com rebar, Next.js e curiosidade.",
+    "fonte": "Código deste site",
+    "voltar": "Voltar ao topo",
+    "ano": "© 2026 Navesz",
+    "edicao": "PORTFÓLIO / 2026"
+  },
+  "visual": {
+    "titulo": "DA IDEIA AO REPOSITÓRIO",
+    "centro": "N",
+    "orbita": "BUILD · EXPLORE · REPEAT ·",
+    "base": "EXPERIMENTOS EM MOVIMENTO",
+    "lista": [
+      "01 / ferramentas",
+      "02 / inteligência artificial",
+      "03 / simulação",
+      "04 / web"
+    ]
+  },
+  "navegacao": "Navegação principal",
+  "contagemSingular": "projeto na seleção"
+}

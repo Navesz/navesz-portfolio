@@ -1,5 +1,5 @@
 {
-  "name": "rebar-laboratorio-20260907",
+  "name": "navesz-portfolio",
   "version": "0.0.1",
   "type": "module",
   "private": true,
@@ -11,14 +11,15 @@
     "format": "prettier --write \"**/*.{ts,tsx}\"",
     "typecheck": "tsc --noEmit",
     "test": "node --test \"testes/**/*.test.mjs\"",
-    "verificar": "npm run lint && npm run typecheck && npm test && npm run build"
+    "verificar": "npm run lint && npm run typecheck && npm test && npm run build && npm run test:export",
+    "test:export": "node testes/conferir-exportacao.mjs"
   },
   "dependencies": {
     "@base-ui/react": "^1.8.0",
     "class-variance-authority": "^0.7.1",
     "cn": "^0.2.6",
     "lucide-react": "^1.42.0",
-    "next": "16.2.6",
+    "next": "16.3.4",
     "next-themes": "^0.4.6",
     "react": "19.2.4",
     "react-dom": "19.2.4",
@@ -31,7 +32,7 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
-    "eslint-config-next": "16.2.6",
+    "eslint-config-next": "16.3.4",
     "prettier": "^3.8.3",
     "prettier-plugin-tailwindcss": "^0.8.0",
     "tailwindcss": "^4",
