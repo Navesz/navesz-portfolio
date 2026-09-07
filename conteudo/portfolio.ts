@@ -25,6 +25,7 @@ const forma = objeto({
   introProjetos: linha,
   filtros: lista(linha, 1, 8),
   rotuloFiltro: linha,
+  rotuloLimite: linha,
   contagem: linha,
   codigo: linha,
   abrir: linha,
@@ -40,6 +41,14 @@ const forma = objeto({
       tipo: linha,
       descricao: linha,
       detalhe: linha,
+      // ONDE ESTE PROJETO NAO E A MELHOR ESCOLHA, com a alternativa nomeada.
+      //
+      // Obrigatorio, e nao opcional, de proposito: um portfolio que diz "use a
+      // outra ferramenta se voce quer X" e mais crivel que um que so elogia, e
+      // um campo opcional seria o primeiro a sumir no projeto seguinte. Se um
+      // projeto nao tem limite que se possa escrever, ou ele nao foi entendido
+      // ou o texto e propaganda.
+      limite: linha,
       tags: lista(linha, 1, 6),
       github: link,
       demo: opcional(link),

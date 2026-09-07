@@ -22,7 +22,13 @@
   "indice": "01 — SELEÇÃO DE PROJETOS",
   "tituloProjetos": "Um problema.\nUm projeto.",
   "introProjetos": "Universos diferentes, a mesma vontade de fazer funcionar.",
-  "filtros": ["Todos", "Ferramentas", "IA", "Simulação", "Web"],
+  "filtros": [
+    "Todos",
+    "Ferramentas",
+    "IA",
+    "Simulação",
+    "Web"
+  ],
   "rotuloFiltro": "Filtrar projetos por área",
   "contagem": "projetos na seleção",
   "codigo": "Código",
@@ -37,19 +43,24 @@
       "nome": "rebar",
       "categoria": "Ferramentas",
       "tipo": "QUALIDADE DE CÓDIGO",
-      "descricao": "O erro encontra uma barreira antes de chegar à produção.",
-      "detalhe": "Um verificador de repositórios, um bloqueio de commit e um gerador que começa o próximo projeto com as verificações instaladas.",
-      "tags": ["JavaScript", "CLI", "MCP"],
+      "descricao": "Pergunta ao repositório o que nenhum linter pergunta: o CI executa mesmo o `check` que o package.json declara, ou só o menciona?",
+      "detalhe": "26 regras contra qualquer repositório git, e um gerador que começa o próximo projeto com os hooks já armados. Nasceu de uma varredura em 161 commits: os três repositórios sem CI eram exatamente os três com o lint quebrado.",
+      "limite": "Não abre uma função — se o problema é o bug na linha, use ESLint ou Biome. E o portão não é retro-instalável: num repositório que já existe você leva o placar, não a barreira.",
+      "tags": [
+        "Node.js",
+        "Git hooks",
+        "MCP"
+      ],
       "github": "https://github.com/Navesz/rebar",
       "demo": "https://navesz.github.io/rebar-site/",
       "visual": "rebar",
       "legenda": "REPOSITÓRIO → VERIFICAÇÃO → PUBLICAÇÃO",
       "linhas": [
-        "$ rebar .",
-        "✓ estrutura",
-        "✓ identidade",
-        "✓ verificações",
-        "código pronto para seguir."
+        "$ npx github:Navesz/rebar .",
+        "  ✓ ai-coauthorship",
+        "  – ci-gates       n/a",
+        "  ✗ production-url  1",
+        "  14 de 14 · 4 n/a · 1 aviso"
       ],
       "numero": "01"
     },
@@ -58,14 +69,25 @@
       "nome": "prumo",
       "categoria": "IA",
       "tipo": "IMAGENS & INTELIGÊNCIA ARTIFICIAL",
-      "descricao": "Vários modelos. Um lugar para criar.",
-      "detalhe": "Use suas próprias chaves de API, gere imagens em diferentes modelos e veja o custo antes de gastar.",
-      "tags": ["TypeScript", "IA", "BYOK"],
+      "descricao": "Compara quanto custa gerar a mesma imagem em provedores diferentes, na mesma unidade: dólar por mil imagens.",
+      "detalhe": "Coleta o catálogo, normaliza cada preço para 1024×1024 com 25 passos e cola a fonte e a data em cada linha. O catálogo não vem no repositório: nasce vazio e só enche quando o coletor roda.",
+      "limite": "Para gerar imagem não serve, porque não gera — use fal.ai ou Replicate. E para comparar preço, o Inference Hub já faz o mesmo, com catálogo maior e no ar.",
+      "tags": [
+        "TypeScript",
+        "PostgreSQL",
+        "oRPC"
+      ],
       "github": "https://github.com/Navesz/prumo",
       "demo": null,
       "visual": "prumo",
       "legenda": "UM PROMPT. NOVAS POSSIBILIDADES.",
-      "linhas": ["prumo / image playground", "explorar", "comparar", "criar"],
+      "linhas": [
+        "$ npm run coletar",
+        "fal            589 modelos",
+        "openrouter       2 modelos",
+        "índice 648 · comparáveis 3",
+        "10 de 14 sem preço público"
+      ],
       "numero": "02"
     },
     {
@@ -73,14 +95,25 @@
       "nome": "openkartline",
       "categoria": "Simulação",
       "tipo": "TRAÇADO & SIMULAÇÃO",
-      "descricao": "A próxima curva começa nos dados.",
-      "detalhe": "Desenhe uma pista e explore a linha de corrida, o perfil de velocidade, os pontos de frenagem e a estimativa de tempo de volta.",
-      "tags": ["TypeScript", "Simulação", "Kart"],
+      "descricao": "Desenha o traçado de um kartódromo em 2D e devolve tempo de volta, perfil de velocidade e os pontos de freio — no navegador, sem conta.",
+      "detalhe": "Importa foto de satélite com calibração por dois cliques, ou uma volta em GPX. O motor em TypeScript é testado contra fixtures do motor em Python, então o número do navegador é o número do servidor.",
+      "limite": "Não faz otimização de tempo mínimo: o solver bate o limite de iteração e entrega voltas de 0,5 a 5,2 s acima do próprio objetivo. Para a melhor linha possível, use o TUMFTM/global_racetrajectory_optimization.",
+      "tags": [
+        "React",
+        "Python",
+        "FastAPI"
+      ],
       "github": "https://github.com/Navesz/openkartline",
       "demo": "https://navesz.github.io/openkartline/",
       "visual": "pista",
       "legenda": "DESENHAR. SIMULAR. AJUSTAR.",
-      "linhas": ["racing line", "apex", "braking"],
+      "linhas": [
+        "POST /v1/simulations",
+        "pista adria   200 amostras",
+        "volta 73.787 s   1268.0 m",
+        "freio 50m apex 81m gás 87m",
+        "PATH_NOT_CONVERGED"
+      ],
       "numero": "03"
     },
     {
@@ -88,14 +121,25 @@
       "nome": "openparts",
       "categoria": "Ferramentas",
       "tipo": "PEÇAS & COMPATIBILIDADE",
-      "descricao": "Conectar peças. Organizar descobertas.",
-      "detalhe": "Um laboratório local de intercâmbio de peças do Chevrolet Vectra, com código aberto e foco em organizar compatibilidades.",
-      "tags": ["Svelte", "Local-first", "Automotivo"],
+      "descricao": "Digite um código de peça e ele diz em quais carros aquele código consta — marcando o que não dá para afirmar.",
+      "detalhe": "Cada linha sai com selo de confiança e motivo, e as ligações sem fonte saem como DO-NOT-ADVISE em vez de virarem sugestão. O catálogo é um fixture de 29 códigos inventados.",
+      "limite": "Não tem número real de peça nenhum, nem importador, nem decodificador de VIN — casa texto com texto dentro do fixture. Para código e aplicação no Brasil, use o CepChev.",
+      "tags": [
+        "SvelteKit",
+        "TypeScript",
+        "GitHub Pages"
+      ],
       "github": "https://github.com/Navesz/openparts",
       "demo": null,
       "visual": "pecas",
       "legenda": "INFORMAÇÃO QUE ENCAIXA.",
-      "linhas": ["openparts", "conexões", "compatibilidade"],
+      "linhas": [
+        "> SYN-VB-BRAKE-F-01",
+        "  SYNTHETIC · freios · 1 carro",
+        "→ SYN-VC-BRAKE-F-01",
+        "  DO-NOT-ADVISE · sem fonte",
+        "> 90512048 → desconhecido"
+      ],
       "numero": "04"
     },
     {
@@ -103,14 +147,25 @@
       "nome": "constellation",
       "categoria": "Ferramentas",
       "tipo": "DADOS PÚBLICOS DO GITHUB",
-      "descricao": "Sinais públicos, vistos de perto.",
-      "detalhe": "Um observatório de perfis, conquistas e atividade no GitHub, pensado para medir sinais públicos sem transformá-los em pontuação artificial.",
-      "tags": ["TypeScript", "GitHub", "Dados"],
+      "descricao": "Audita um perfil público do GitHub e marca como lacuna o que não conseguiu ler, em vez de mostrar zero.",
+      "detalhe": "Lê a página do perfil e três endpoints da API pública: selos, seguidores, PRs mesclados e o repositório autoral com mais estrelas. Exporta em Markdown, HTML, JSON e CSV.",
+      "limite": "Não gera SVG, então não serve de cartão para colar no README — para isso existe o github-readme-stats. E para história de ecossistema, o ossinsight.io lê o GH Archive inteiro.",
+      "tags": [
+        "Next.js",
+        "TypeScript",
+        "Cloudflare"
+      ],
       "github": "https://github.com/Navesz/constellation",
       "demo": null,
       "visual": "constelacao",
       "legenda": "ATIVIDADE. CONTEXTO. CONEXÕES.",
-      "linhas": ["public signals"],
+      "linhas": [
+        "GET /api/audit?login=octocat",
+        "fontes: 3 de 3 disponíveis",
+        "pull-shark   nível 2   16 PRs",
+        "starstruck   sem contador",
+        "conquistas: 4 visíveis"
+      ],
       "numero": "05"
     },
     {
@@ -118,14 +173,25 @@
       "nome": "Galegos",
       "categoria": "Web",
       "tipo": "CARDÁPIO DIGITAL",
-      "descricao": "Da escolha ao pedido, sem desencontro.",
-      "detalhe": "Um cardápio digital criado para um restaurante real, que organiza a escolha do cliente e envia o pedido finalizado ao WhatsApp.",
-      "tags": ["TypeScript", "Web", "WhatsApp"],
+      "descricao": "Cardápio de uma hamburgueria real: o cliente monta o pedido no celular e ele sai formatado pelo WhatsApp.",
+      "detalhe": "Carrinho com extras, CEP com endereço puxado do ViaCEP, e a mensagem pronta com itens, tipo de pedido, pagamento e total. Página única e estática, sem servidor e sem pagamento online.",
+      "limite": "Preço e item são código, então toda troca passa por quem tem acesso ao repositório. Para o dono mexer no cardápio sozinho, o Goomer tem editor com plano grátis e pedido por WhatsApp.",
+      "tags": [
+        "Next.js",
+        "Base UI",
+        "Tailwind"
+      ],
       "github": "https://github.com/Navesz/Galegos",
       "demo": null,
       "visual": "menu",
       "legenda": "ESCOLHER → CONFERIR → PEDIR",
-      "linhas": ["Galegos", "feito para dar fome.", "seu próximo pedido"],
+      "linhas": [
+        "Olá! Gostaria de fazer um pedido:",
+        "• X Bacon x1 — R$ 18,99",
+        "  + Bacon x1 — R$ 4,00",
+        "*Total: R$ 22,99*",
+        "Tipo: Delivery · PIX"
+      ],
       "numero": "06"
     }
   ],
@@ -159,5 +225,6 @@
     ]
   },
   "navegacao": "Navegação principal",
-  "contagemSingular": "projeto na seleção"
+  "contagemSingular": "projeto na seleção",
+  "rotuloLimite": "ONDE NÃO SERVE"
 }

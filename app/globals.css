@@ -738,6 +738,26 @@ h2 {
   margin-top: 10px;
   min-height: 76px;
 }
+/* ONDE NAO SERVE.
+   Borda a esquerda e nao um cartao proprio: o limite pertence ao projeto, nao e
+   um aviso colado nele. Fica mais apagado que o detalhe de proposito -- quem le
+   um portfolio busca o que a coisa faz, e encontra a ressalva quando desce. */
+.projeto-limite {
+  font-size: 13px;
+  line-height: 1.7;
+  color: #8f9a84;
+  margin-top: 16px;
+  padding-left: 14px;
+  border-left: 2px solid #3a442f;
+}
+.projeto-limite span {
+  display: block;
+  font-family: var(--fonte-mono), monospace;
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  color: #6f7a64;
+  margin-bottom: 5px;
+}
 .tags {
   display: flex;
   gap: 7px;

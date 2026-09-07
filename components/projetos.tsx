@@ -138,6 +138,10 @@ export function Projetos({ conteudo }: { conteudo: typeof portfolio }) {
               </h3>
               <p className="projeto-resumo">{projeto.descricao}</p>
               <p className="projeto-detalhe">{projeto.detalhe}</p>
+              <p className="projeto-limite">
+                <span>{conteudo.rotuloLimite}</span>
+                {projeto.limite}
+              </p>
               <ul className="tags">
                 {projeto.tags.map((tag) => (
                   <li key={tag}>{tag}</li>
