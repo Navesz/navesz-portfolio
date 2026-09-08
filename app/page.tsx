@@ -1,25 +1,24 @@
-import type { ReactNode } from "react"
-import { ArrowUpRight, ArrowDown, ArrowUp, Code2, Asterisk } from "lucide-react"
-import { linkWhatsapp, site, type Contato } from "@/conteudo/carregar"
-import { portfolio as p } from "@/conteudo/portfolio"
-import { Projetos } from "@/components/projetos"
+import type { ReactNode } from 'react'
+import { ArrowUpRight, ArrowDown, ArrowUp, Code2, Asterisk } from 'lucide-react'
+import { linkWhatsapp, site, type Contato } from '@/conteudo/carregar'
+import { portfolio as p } from '@/conteudo/portfolio'
+import { Projetos } from '@/components/projetos'
 
 const CONTATOS = {
   whatsapp: ({ whatsapp }: Contato) =>
     whatsapp && <a href={linkWhatsapp(whatsapp)}>{whatsapp.exibicao}</a>,
-  email: ({ email }: Contato) =>
-    email && <a href={`mailto:${email}`}>{email}</a>,
+  email: ({ email }: Contato) => email && <a href={`mailto:${email}`}>{email}</a>,
   endereco: ({ endereco }: Contato) =>
     endereco && (
       <address>
         {endereco.logradouro}
-        {", "}
+        {', '}
         {endereco.bairro}
-        {" — "}
+        {' — '}
         {endereco.cidade}
-        {"/"}
+        {'/'}
         {endereco.uf}
-        {" · "}
+        {' · '}
         {endereco.cep}
       </address>
     ),
@@ -60,9 +59,9 @@ export default function Pagina() {
               {p.selo}
             </p>
             <h1>
-              {site.home.titulo.split("\n")[0]}
+              {site.home.titulo.split('\n')[0]}
               <br />
-              <span>{site.home.titulo.split("\n")[1]}</span>
+              <span>{site.home.titulo.split('\n')[1]}</span>
             </h1>
             <p className="hero-descricao">{site.home.subtitulo}</p>
             <div className="hero-acoes">
@@ -136,9 +135,7 @@ export default function Pagina() {
               <ol className="principios">
                 {site.home.destaques.map((item, i) => (
                   <li key={item.titulo}>
-                    <span className="principio-numero">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
+                    <span className="principio-numero">{String(i + 1).padStart(2, '0')}</span>
                     <div>
                       <h3>{item.titulo}</h3>
                       <p>{item.texto}</p>
@@ -150,12 +147,7 @@ export default function Pagina() {
           </div>
         </section>
         <section className="convite largura">
-          <Asterisk
-            className="asterisco-grande"
-            size={72}
-            strokeWidth={1}
-            aria-hidden="true"
-          />
+          <Asterisk className="asterisco-grande" size={72} strokeWidth={1} aria-hidden="true" />
           <h2>{p.sobre.cta}</h2>
           <p>{p.sobre.textoCta}</p>
           <a className="botao-principal" href={p.github.url}>

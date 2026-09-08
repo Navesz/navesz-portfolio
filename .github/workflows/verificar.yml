@@ -65,8 +65,8 @@ jobs:
 
       - uses: actions/setup-node@v7
         with:
-          node-version: "22"
-          cache: "npm"
+          node-version: '22'
+          cache: 'npm'
 
       # `npm ci` and not `npm install`: the lockfile is the source, and CI does
       # not decide the version.
@@ -148,8 +148,8 @@ jobs:
       # green.
       - uses: actions/setup-node@v7
         with:
-          node-version: "22"
-          cache: "npm"
+          node-version: '22'
+          cache: 'npm'
       - run: npm ci
 
       # The same `next build` the ruler already ran. The `out/` is not versioned —

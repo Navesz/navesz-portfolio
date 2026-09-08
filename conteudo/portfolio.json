@@ -22,13 +22,7 @@
   "indice": "01 — SELEÇÃO DE PROJETOS",
   "tituloProjetos": "Um problema.\nUm projeto.",
   "introProjetos": "Universos diferentes, a mesma vontade de fazer funcionar.",
-  "filtros": [
-    "Todos",
-    "Ferramentas",
-    "IA",
-    "Simulação",
-    "Web"
-  ],
+  "filtros": ["Todos", "Ferramentas", "IA", "Simulação", "Web"],
   "rotuloFiltro": "Filtrar projetos por área",
   "contagem": "projetos na seleção",
   "codigo": "Código",
@@ -46,11 +40,7 @@
       "descricao": "Pergunta ao repositório o que nenhum linter pergunta: o CI executa mesmo o `check` que o package.json declara, ou só o menciona?",
       "detalhe": "26 regras contra qualquer repositório git, e um gerador que começa o próximo projeto com os hooks já armados. Nasceu de uma varredura em 161 commits: os três repositórios sem CI eram exatamente os três com o lint quebrado.",
       "limite": "Não abre uma função — se o problema é o bug na linha, use ESLint ou Biome. E o portão não é retro-instalável: num repositório que já existe você leva o placar, não a barreira.",
-      "tags": [
-        "Node.js",
-        "Git hooks",
-        "MCP"
-      ],
+      "tags": ["Node.js", "Git hooks", "MCP"],
       "github": "https://github.com/Navesz/rebar",
       "demo": "https://navesz.github.io/rebar-site/",
       "visual": "rebar",
@@ -72,11 +62,7 @@
       "descricao": "Compara quanto custa gerar a mesma imagem em provedores diferentes, na mesma unidade: dólar por mil imagens.",
       "detalhe": "Coleta o catálogo, normaliza cada preço para 1024×1024 com 25 passos e cola a fonte e a data em cada linha. O catálogo não vem no repositório: nasce vazio e só enche quando o coletor roda.",
       "limite": "Para gerar imagem não serve, porque não gera — use fal.ai ou Replicate. E para comparar preço, o Inference Hub já faz o mesmo, com catálogo maior e no ar.",
-      "tags": [
-        "TypeScript",
-        "PostgreSQL",
-        "oRPC"
-      ],
+      "tags": ["TypeScript", "PostgreSQL", "oRPC"],
       "github": "https://github.com/Navesz/prumo",
       "demo": null,
       "visual": "prumo",
@@ -98,11 +84,7 @@
       "descricao": "Desenha o traçado de um kartódromo em 2D e devolve tempo de volta, perfil de velocidade e os pontos de freio — no navegador, sem conta.",
       "detalhe": "Importa foto de satélite com calibração por dois cliques, ou uma volta em GPX. O motor em TypeScript é testado contra fixtures do motor em Python, então o número do navegador é o número do servidor.",
       "limite": "Não faz otimização de tempo mínimo: o solver bate o limite de iteração e entrega voltas de 0,5 a 5,2 s acima do próprio objetivo. Para a melhor linha possível, use o TUMFTM/global_racetrajectory_optimization.",
-      "tags": [
-        "React",
-        "Python",
-        "FastAPI"
-      ],
+      "tags": ["React", "Python", "FastAPI"],
       "github": "https://github.com/Navesz/openkartline",
       "demo": "https://navesz.github.io/openkartline/",
       "visual": "pista",
@@ -124,11 +106,7 @@
       "descricao": "Digite um código de peça e ele diz em quais carros aquele código consta — marcando o que não dá para afirmar.",
       "detalhe": "Cada linha sai com selo de confiança e motivo, e as ligações sem fonte saem como DO-NOT-ADVISE em vez de virarem sugestão. O catálogo é um fixture de 29 códigos inventados.",
       "limite": "Não tem número real de peça nenhum, nem importador, nem decodificador de VIN — casa texto com texto dentro do fixture. Para código e aplicação no Brasil, use o CepChev.",
-      "tags": [
-        "SvelteKit",
-        "TypeScript",
-        "GitHub Pages"
-      ],
+      "tags": ["SvelteKit", "TypeScript", "GitHub Pages"],
       "github": "https://github.com/Navesz/openparts",
       "demo": null,
       "visual": "pecas",
@@ -150,11 +128,7 @@
       "descricao": "Audita um perfil público do GitHub e marca como lacuna o que não conseguiu ler, em vez de mostrar zero.",
       "detalhe": "Lê a página do perfil e três endpoints da API pública: selos, seguidores, PRs mesclados e o repositório autoral com mais estrelas. Exporta em Markdown, HTML, JSON e CSV.",
       "limite": "Não gera SVG, então não serve de cartão para colar no README — para isso existe o github-readme-stats. E para história de ecossistema, o ossinsight.io lê o GH Archive inteiro.",
-      "tags": [
-        "Next.js",
-        "TypeScript",
-        "Cloudflare"
-      ],
+      "tags": ["Next.js", "TypeScript", "Cloudflare"],
       "github": "https://github.com/Navesz/constellation",
       "demo": null,
       "visual": "constelacao",
@@ -176,11 +150,7 @@
       "descricao": "Cardápio de uma hamburgueria real: o cliente monta o pedido no celular e ele sai formatado pelo WhatsApp.",
       "detalhe": "Carrinho com extras, CEP com endereço puxado do ViaCEP, e a mensagem pronta com itens, tipo de pedido, pagamento e total. Página única e estática, sem servidor e sem pagamento online.",
       "limite": "Preço e item são código, então toda troca passa por quem tem acesso ao repositório. Para o dono mexer no cardápio sozinho, o Goomer tem editor com plano grátis e pedido por WhatsApp.",
-      "tags": [
-        "Next.js",
-        "Base UI",
-        "Tailwind"
-      ],
+      "tags": ["Next.js", "Base UI", "Tailwind"],
       "github": "https://github.com/Navesz/Galegos",
       "demo": null,
       "visual": "menu",
@@ -217,12 +187,7 @@
     "centro": "N",
     "orbita": "BUILD · EXPLORE · REPEAT ·",
     "base": "EXPERIMENTOS EM MOVIMENTO",
-    "lista": [
-      "01 / ferramentas",
-      "02 / inteligência artificial",
-      "03 / simulação",
-      "04 / web"
-    ]
+    "lista": ["01 / ferramentas", "02 / inteligência artificial", "03 / simulação", "04 / web"]
   },
   "navegacao": "Navegação principal",
   "contagemSingular": "projeto na seleção",

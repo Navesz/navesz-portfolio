@@ -1,11 +1,11 @@
-import bruto from "./portfolio.json"
-import { objeto, texto, lista, opcional, ErroDeConteudo } from "./esquema"
+import bruto from './portfolio.json'
+import { objeto, texto, lista, opcional, ErroDeConteudo } from './esquema'
 const linha = texto(1, 400)
 const link = (valor: unknown, caminho: string): string => {
   const resultado = linha(valor, caminho)
   const url = new URL(resultado)
-  if (url.protocol !== "https:" || url.username || url.password) {
-    throw new ErroDeConteudo(caminho + ": esperado link HTTPS sem credenciais")
+  if (url.protocol !== 'https:' || url.username || url.password) {
+    throw new ErroDeConteudo(caminho + ': esperado link HTTPS sem credenciais')
   }
   return resultado
 }
@@ -58,7 +58,7 @@ const forma = objeto({
       numero: linha,
     }),
     1,
-    30
+    30,
   ),
   sobre: objeto({
     indice: linha,
@@ -85,16 +85,11 @@ const forma = objeto({
     lista: lista(linha, 1, 8),
   }),
 })
-export const portfolio = forma(bruto, "portfolio")
+export const portfolio = forma(bruto, 'portfolio')
 const ids = new Set<string>()
 for (const projeto of portfolio.projetos) {
-  if (
-    ids.has(projeto.id) ||
-    !portfolio.filtros.slice(1).includes(projeto.categoria)
-  ) {
-    throw new ErroDeConteudo(
-      "Projeto duplicado ou categoria sem filtro: " + projeto.id
-    )
+  if (ids.has(projeto.id) || !portfolio.filtros.slice(1).includes(projeto.categoria)) {
+    throw new ErroDeConteudo('Projeto duplicado ou categoria sem filtro: ' + projeto.id)
   }
   ids.add(projeto.id)
 }

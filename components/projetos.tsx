@@ -1,24 +1,21 @@
-"use client"
+'use client'
 
-import { useState } from "react"
-import { ArrowUpRight, Code2, ArrowRight } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import type { portfolio, Projeto } from "@/conteudo/portfolio"
+import { useState } from 'react'
+import { ArrowUpRight, Code2, ArrowRight } from 'lucide-react'
+import { Button } from '@/components/ui/button'
+import type { portfolio, Projeto } from '@/conteudo/portfolio'
 
 function Ilustracao({ projeto }: { projeto: Projeto }) {
   return (
-    <div
-      className={"projeto-visual visual-" + projeto.visual}
-      aria-hidden="true"
-    >
+    <div className={'projeto-visual visual-' + projeto.visual} aria-hidden="true">
       <div className="visual-topo">
         <span>{projeto.linhas[0]}</span>
         <span>↗</span>
       </div>
-      {projeto.visual === "rebar" && (
+      {projeto.visual === 'rebar' && (
         <div className="terminal">
           {projeto.linhas.slice(1).map((linha, i) => (
-            <div key={linha} className={i === 3 ? "terminal-fim" : ""}>
+            <div key={linha} className={i === 3 ? 'terminal-fim' : ''}>
               {linha}
             </div>
           ))}
@@ -29,14 +26,14 @@ function Ilustracao({ projeto }: { projeto: Projeto }) {
           </div>
         </div>
       )}
-      {projeto.visual === "prumo" && (
+      {projeto.visual === 'prumo' && (
         <div className="quadros">
           <i />
           <i />
           <i />
         </div>
       )}
-      {projeto.visual === "pista" && (
+      {projeto.visual === 'pista' && (
         <svg viewBox="0 0 500 260" className="desenho-pista">
           <path
             className="pista-fundo"
@@ -50,14 +47,14 @@ function Ilustracao({ projeto }: { projeto: Projeto }) {
           <circle className="ponto" cx="216" cy="149" r="6" />
         </svg>
       )}
-      {projeto.visual === "pecas" && (
+      {projeto.visual === 'pecas' && (
         <div className="engrenagens">
           <i />
           <i />
           <i />
         </div>
       )}
-      {projeto.visual === "constelacao" && (
+      {projeto.visual === 'constelacao' && (
         <svg viewBox="0 0 500 260" className="estrelas">
           <path d="M62 160L141 65L270 97L398 48M141 65L218 205L270 97L370 181L398 48M62 160L218 205L370 181L447 218" />
           {[
@@ -73,7 +70,7 @@ function Ilustracao({ projeto }: { projeto: Projeto }) {
           ))}
         </svg>
       )}
-      {projeto.visual === "menu" && (
+      {projeto.visual === 'menu' && (
         <div className="menu-ilustrado">
           <div className="prato">
             <i />
@@ -94,16 +91,12 @@ function Ilustracao({ projeto }: { projeto: Projeto }) {
 export function Projetos({ conteudo }: { conteudo: typeof portfolio }) {
   const [filtro, definirFiltro] = useState(conteudo.filtros[0])
   const projetos = conteudo.projetos.filter(
-    (projeto) => filtro === conteudo.filtros[0] || projeto.categoria === filtro
+    (projeto) => filtro === conteudo.filtros[0] || projeto.categoria === filtro,
   )
   return (
     <>
       <div className="barra-filtros">
-        <div
-          className="filtros"
-          role="group"
-          aria-label={conteudo.rotuloFiltro}
-        >
+        <div className="filtros" role="group" aria-label={conteudo.rotuloFiltro}>
           {conteudo.filtros.map((item) => (
             <Button
               key={item}
@@ -117,10 +110,8 @@ export function Projetos({ conteudo }: { conteudo: typeof portfolio }) {
           ))}
         </div>
         <p className="contador" role="status" aria-live="polite">
-          {String(projetos.length).padStart(2, "0")}{" "}
-          {projetos.length === 1
-            ? conteudo.contagemSingular
-            : conteudo.contagem}
+          {String(projetos.length).padStart(2, '0')}{' '}
+          {projetos.length === 1 ? conteudo.contagemSingular : conteudo.contagem}
         </p>
       </div>
       <div className="grade-projetos">
@@ -148,19 +139,13 @@ export function Projetos({ conteudo }: { conteudo: typeof portfolio }) {
                 ))}
               </ul>
               <div className="projeto-links">
-                <a
-                  href={projeto.github}
-                  aria-label={conteudo.codigo + " — " + projeto.nome}
-                >
+                <a href={projeto.github} aria-label={conteudo.codigo + ' — ' + projeto.nome}>
                   <Code2 size={17} aria-hidden="true" />
                   {conteudo.codigo}
                   <ArrowUpRight size={15} aria-hidden="true" />
                 </a>
                 {projeto.demo && (
-                  <a
-                    href={projeto.demo}
-                    aria-label={conteudo.abrir + " — " + projeto.nome}
-                  >
+                  <a href={projeto.demo} aria-label={conteudo.abrir + ' — ' + projeto.nome}>
                     {conteudo.abrir}
                     <ArrowRight size={17} aria-hidden="true" />
                   </a>

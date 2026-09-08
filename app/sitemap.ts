@@ -1,6 +1,6 @@
-import type { MetadataRoute } from "next"
+import type { MetadataRoute } from 'next'
 
-import { site } from "@/conteudo/carregar"
+import { site } from '@/conteudo/carregar'
 
 /**
  * `force-static` is WHAT MAKES THIS FILE EXIST under `output: "export"`. A
@@ -9,7 +9,7 @@ import { site } from "@/conteudo/carregar"
  * build does not complain, and the absence only shows up in Search Console
  * weeks later. The same holds for `robots.ts` and `manifest.ts`.
  */
-export const dynamic = "force-static"
+export const dynamic = 'force-static'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
@@ -19,7 +19,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       // generates different bytes on every build, and a build that is not
       // reproducible cannot be compared between two runs.
       lastModified: site.meta.atualizadoEm,
-      changeFrequency: "monthly",
+      changeFrequency: 'monthly',
       priority: 1,
     },
   ]

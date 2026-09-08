@@ -1,6 +1,6 @@
-@import "tailwindcss";
-@import "tw-animate-css";
-@import "shadcn/tailwind.css";
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
 @theme inline {
   --font-sans: var(--fonte-sans);
   --font-mono: var(--fonte-mono);
@@ -414,7 +414,7 @@ h2 {
   color: #aab39f !important;
   cursor: pointer;
 }
-.filtro[aria-pressed="true"] {
+.filtro[aria-pressed='true'] {
   background: #b8f36b !important;
   color: #17220f !important;
 }
@@ -601,12 +601,7 @@ h2 {
   outline: 2px solid #798f9f;
   outline-offset: 8px;
   border-radius: 50%;
-  background: radial-gradient(
-    circle,
-    #b8c5ce 0 22%,
-    #708798 23% 40%,
-    #94a8b6 41%
-  );
+  background: radial-gradient(circle, #b8c5ce 0 22%, #708798 23% 40%, #94a8b6 41%);
 }
 .engrenagens i:nth-child(2) {
   width: 140px;
